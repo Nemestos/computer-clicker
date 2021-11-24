@@ -1,25 +1,24 @@
-import {} from "./State.js";
 import { addGold } from "./GoldsManager.js";
 
 export function buyMinion(evt) {
   let gameState = evt.currentTarget.gameState;
   let id = evt.currentTarget.id_minion;
   gameState.minions.forEach((element) => {
-    if (element.id == id_minion) {
+    if (element.id == id) {
       if (gameState.golds >= element.cost) {
         gameState.golds -= element.cost;
         element.owned += 1;
       }
     }
   });
+  console.log(gameState);
 }
-
 export function updateShopView(gameState) {
   let minions_list = document.getElementById("minion-list");
   minions_list.innerHTML = "";
   gameState.minions.forEach((item) => {
     let [elt, info] = createEmptyMinionItem(minions_list);
-    updateMinionInfo(info, item);
+    updateMinionInfo(info, item, gameState);
     updateMinionCapacities(elt, item.capacities, item);
   });
 }
@@ -40,11 +39,10 @@ function updateMinionInfo(infosParent, minion, gameState) {
 function updateMinionCapacities(capParent, capacities, minion) {
   capacities.forEach((cap) => {
     let capItem = genElement(capParent, "div", "", "minion-capacity");
-    Object.entries(cap).forEach(([key, value]) => {
-      if (value.toString()[0] == "$") {
-        cap[key] = minion[value.slice(1)];
-      }
-    });
+    let structure = cap["structure"];
+    if (structure[0] == "$") {
+      cap["value"] = minion[cap["structure"].slice(1)];
+    }
 
     let name = genElement(capItem, "p", cap.name);
     let value = genElement(capItem, "p", cap.value);
