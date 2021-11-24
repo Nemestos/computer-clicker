@@ -1,9 +1,15 @@
+import {addGold} from "./GoldsManager.js";
+export function buyMinion(evt){
+    let gameState = evt.currentTarget.gameState
+    let id = evt.currentTarget.id_minion;
+
+}
 export function updateShopView(gameState){
     let minions_list = document.getElementById("minion-list");
     minions_list.innerHTML="";
     gameState.minions.forEach((item)=>{
         let [elt,info] = createEmptyMinionItem(minions_list);
-        updateMinionInfo(info,item);
+        updateMinionInfo(info,item,gameState);
         updateMinionCapacities(elt,item.capacities,item);
     });
 }
@@ -12,8 +18,12 @@ function createEmptyMinionItem(parent){
     let infos = genElement(item,"div","","minion-info");
     return [item,infos];
 }
-function updateMinionInfo(infosParent,minion){
+function updateMinionInfo(infosParent,minion,gameState){
     let title = genElement(infosParent,"h3",minion.name);
+    let buy = genElement(infosParent,"button","Buy");
+    buy.addEventListener("click",buyMinion);
+    buy.gameState = gameState;
+    buy.id_minion = minion.id;
     let mem = genElement(infosParent,"p","50Mb");
 }
 function updateMinionCapacities(capParent,capacities,minion){
