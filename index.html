@@ -6,29 +6,51 @@
     <title>Computer clicker</title>
 </head>
 <body>
-    <main>
-        <div id="div-gold">
-            <div id="gold">
-                <p>Golds : <span> 0 </span> </p>
-            </div>
-            <div id="gps">
-                <p>GPS : <span> 0</span> </p>
+<main>
+    <div id="div-gold">
+        <div id="gold">
+            <p>Golds : <span> 0 </span></p>
+        </div>
+        <div id="gps">
+            <p>GPS : <span> 0</span></p>
+        </div>
+    </div>
+    <div id="game-content">
+
+
+        <div id="minion-panel" class="game-item">
+            <div id="minion-list">
+                <div class="minion-item">
+
+                    <div class="minion-info">
+                        <h3>Hard drive</h3>
+                        <p>50mb</p>
+                    </div>
+                    <div class="minion-capacity">
+                        <label>Quantity</label>
+                        <label>1</label>
+                        <label>2.50</label>
+                        <button onclick="buyMinion()">Upgrade</button>
+
+                    </div>
+                    <div class="minion-capacity">
+                        <label>Quantity</label>
+                        <label>1</label>
+                        <label>2.50</label>
+                        <button>Upgrade</button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="game-content">
-            <div id="clicker-panel" class="game-item">
-                <ul>
-                    <li><button id="clickBtn"> CLICKER </button></li>
-                </ul>
-            </div>
-            
-            <div id="minion-panel" class="game-item">
-                <ul>
-                    
-                </ul>
-            </div>
+        <div id="clicker-panel" class="game-item">
+            <ul>
+                <li>
+                    <button id="clickBtn"> CLICKER</button>
+                </li>
+            </ul>
         </div>
-        </main>
-    </body>
+    </div>
+</main>
+</body>
 </html>
 <script type="module" src="assets/js/index.js"></script>

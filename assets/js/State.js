@@ -30,7 +30,8 @@ export var defaultMinions =[
                 value:"Hannah montana linux",
                 type:"",
                 price:500.0,
-            }
+            },
+
         ]
     },
     {
