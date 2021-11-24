@@ -1,0 +1,19 @@
+Clicker Début> Terminal
+Possibilité d'installer de nouveau clicker correspondant à des logiciels:
+    Bloc-Note
+    Emacs
+    NotePad++
+    Visual Studio Code
+
+Minion:
+    Disque dur > Au bout d'un certain niveau par exemple améliore le disque dur
+    CPU > Le nombre de coeur, La fréquence
+    GPU > VRAM
+    RAM > Ram
+    Chaleur = Si > 80°C, on réduit les golds gagnés
+            Possibilité de refroidir en améliorant ventirad, à partir d'un certain niveau, s'améliore en Watercooling 
+    Alimentation > L'amélioration de chaque autres composantes augmente sa consommation, il faudra améliorer
+                    l'alimentation pour pouvoir continuer l'amélioration des autres minions.
+
+Bonus: Achat de RGB qui change la couleur de certaine partie du site
+
