@@ -1,4 +1,4 @@
-export var minions =[
+export var defaultMinions =[
     {
         id: 1,
         name: "Hard drive",
@@ -89,6 +89,7 @@ class GameState{
     constructor() {
         this.golds = 0;
         this.gps = 1;
+        this.minions = defaultMinions;
     }
 }
 

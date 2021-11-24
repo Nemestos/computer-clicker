@@ -15,6 +15,11 @@ export function displayGps(gameState){
 
     display.innerHTML = `Gps : <span>${gameState.gps}</span>`;
 }
+export function getGPS(gameState){
+    gameState.minions.forEach((item)=>{
+        gameState.gps+=item.gps*item.owned;
+    })
+}
 export function applyGpsGolds(gameState){
     gameState.golds+=gameState.gps;
 }
