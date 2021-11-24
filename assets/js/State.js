@@ -5,12 +5,11 @@ export var defaultMinions =[
         cost: 50,
         gps: 0.1,
         owned: 0,
-        ownedText:"Quantity",
         temp:20,
         capacities: [
             {
                 name:"Capacity",
-                value:1.0,
+                value:"$owned",
                 type:"MB",
                 price:10.0,
             }
@@ -22,7 +21,6 @@ export var defaultMinions =[
         cost: 150,
         gps: 0.5,
         owned: 0,
-        ownedText: "Quantity",
         temp:30,
         capacities: [
             {
@@ -30,7 +28,8 @@ export var defaultMinions =[
                 value:"Hannah montana linux",
                 type:"",
                 price:500.0,
-            }
+            },
+
         ]
     },
     {
@@ -39,7 +38,6 @@ export var defaultMinions =[
         cost: 500,
         gps: 1,
         owned: 0,
-        ownedText: "Cores",
         temp: 45,
         capacities: [
             {
@@ -56,7 +54,6 @@ export var defaultMinions =[
         cost: 1000,
         gps: 3,
         owned: 0,
-        ownedText: "Quantity",
         temp: 50,
         capacities: [
             {
@@ -73,12 +70,11 @@ export var defaultMinions =[
         cost: 75,
         gps: 1.25,
         owned: 0,
-        ownedText: "Quantity",
         temp: 25,
         capacities: [
             {
                 name:"Capacity",
-                value:1,
+                value:"$owned",
                 type:"MB",
                 price:50,
             }

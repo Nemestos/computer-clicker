@@ -1,0 +1,4 @@
+#clicker-panel{
+    display: flex;
+    flex-direction: column;
+}
