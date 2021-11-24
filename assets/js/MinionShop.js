@@ -21,7 +21,6 @@ export function buyMinion(evt) {
         minion.owned += 1;
         updateShopView(gameState);
     }
-  });
 }
 
 export function upgradeCapacity(evt) {
@@ -41,33 +40,34 @@ export function upgradeCapacity(evt) {
 }
 
 export function updateShopView(gameState) {
-  let minions_list = document.getElementById("minion-list");
-  minions_list.innerHTML = "";
-  gameState.minions.forEach((item) => {
-    let [elt, info] = createEmptyMinionItem(minions_list, item);
-    updateMinionInfo(info, item, gameState);
-    updateMinionCapacities(elt, item.capacities, item);
-  });
+    let minions_list = document.getElementById("minion-list");
+    minions_list.innerHTML = "";
+    gameState.minions.forEach((item) => {
+        let [elt, info] = createEmptyMinionItem(minions_list, item);
+        updateMinionInfo(info, item, gameState);
+        updateMinionCapacities(elt, item.capacities, item,gameState);
+    });
 }
+
 function createEmptyMinionItem(parent, items) {
-  let item = genElement(parent, "div", "", "minion-item");
-  if (items.owned == 0) {
-    var infos = genElement(item, "div", "", "minion-info");
-  } else {
-    var infos = genElement(item, "div", "", "minion-info-buy");
-  }
-  return [item, infos];
+    let item = genElement(parent, "div", "", "minion-item");
+    if (items.owned == 0) {
+        var infos = genElement(item, "div", "", "minion-info");
+    } else {
+        var infos = genElement(item, "div", "", "minion-info-buy");
+    }
+    return [item, infos];
 }
 
 function updateMinionInfo(infosParent, minion, gameState) {
-  let title = genElement(infosParent, "h3", minion.name);
-  let price = genElement(infosParent, "h4", `Cost : ${minion.cost}`);
-  if (minion.owned == 0) {
-    let buy = genElement(infosParent, "button", "Buy");
-    buy.addEventListener("click", buyMinion);
-    buy.gameState = gameState;
-    buy.id_minion = minion.id;
-  }
+    let title = genElement(infosParent, "h3", minion.name);
+    let price = genElement(infosParent, "h4", `Cost : ${minion.cost}`);
+    if (minion.owned == 0) {
+        let buy = genElement(infosParent, "button", "Buy");
+        buy.addEventListener("click", buyMinion);
+        buy.gameState = gameState;
+        buy.id_minion = minion.id;
+    }
 
     let mem = genElement(infosParent, "p", "50Mb");
 }
