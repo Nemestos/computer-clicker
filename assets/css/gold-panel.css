@@ -1,0 +1,9 @@
+#div-gold {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+}
+
+#gold {
+  margin-right: 20px;
+}
