@@ -8,12 +8,12 @@ export function addGold(evt){
 export function displayGolds(gameState){
     let display = document.querySelector("#gold p");
 
-    display.innerHTML = `Golds : <span id=\"number-gold\">${gameState.golds}</span>`;
+    display.innerHTML = `Golds : <span>${gameState.golds}</span>`;
 }
 export function displayGps(gameState){
     let display = document.querySelector("#gps p");
 
-    display.innerHTML = `Gps : <span id=\"number-gps\">${gameState.gps}</span>`;
+    display.innerHTML = `Gps : <span>${gameState.gps}</span>`;
 }
 export function applyGpsGolds(gameState){
     gameState.golds+=gameState.gps;
