@@ -1,5 +1,5 @@
 import {GameState} from "./State.js";
-import {addGold, applyGpsGolds, displayGolds} from "./GoldsManager.js";
+import {addGold, applyGpsGolds, displayGolds, displayGps} from "./GoldsManager.js";
 var btnAddGold = document.getElementById("clickBtn");
 var state = new GameState();
 
@@ -8,4 +8,5 @@ btnAddGold.gameState = state;
 btnAddGold.x = 1;
 
 var gpsHandler = setInterval(applyGpsGolds,1000,state);
-var updateDisplay = setInterval(displayGolds,60,state);
+var updateGold = setInterval(displayGolds,60,state);
+var updateGps = setInterval(displayGps,60,state);
