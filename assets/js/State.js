@@ -21,7 +21,7 @@ export var defaultMinions = [
     name: "Motherboard",
     cost: 150,
     gps: 0.5,
-    owned: 0,
+    owned: 1,
     temp: 30,
     capacities: [
       {
@@ -38,7 +38,7 @@ export var defaultMinions = [
     name: "CPU",
     cost: 500,
     gps: 1,
-    owned: 0,
+    owned: 1,
     temp: 45,
     capacities: [
       {
@@ -59,11 +59,18 @@ export var defaultMinions = [
     temp: 50,
     capacities: [
       {
+        name: "Capacity",
+        structure: "$owned",
+        value: "",
+        type: "GB",
+        price: 500,
+      },
+      {
         name: "VRAM",
         structure: "",
         value: 4,
         type: "GB",
-        price: 250,
+        price: 150,
       },
     ],
   },

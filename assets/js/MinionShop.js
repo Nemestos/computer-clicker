@@ -29,10 +29,13 @@ function createEmptyMinionItem(parent) {
 }
 function updateMinionInfo(infosParent, minion, gameState) {
   let title = genElement(infosParent, "h3", minion.name);
-  let buy = genElement(infosParent, "button", "Buy");
-  buy.addEventListener("click", buyMinion);
-  buy.gameState = gameState;
-  buy.id_minion = minion.id;
+  if (minion.owned == 0) {
+    let buy = genElement(infosParent, "button", "Buy");
+    buy.addEventListener("click", buyMinion);
+    buy.gameState = gameState;
+    buy.id_minion = minion.id;
+  }
+
   let mem = genElement(infosParent, "p", "50Mb");
 }
 
