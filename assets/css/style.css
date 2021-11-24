@@ -1,7 +1,20 @@
+@import url(variable.css);
+@import url(gold-panel.css);
+@import url(minion-panel.css);
+
 ul {
   list-style: none;
 }
 
 span {
   font-weight: bold;
+}
+
+#game-content {
+  display: flex;
+  width: 80%;
+}
+
+.game-item {
+  width: 50%;
 }
