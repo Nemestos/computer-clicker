@@ -13,9 +13,9 @@ var state = new GameState();
 btnAddGold.addEventListener("click", addGold);
 btnAddGold.gameState = state;
 btnAddGold.x = 1;
+updateShopView(state);
+
 var gpsMinions = setInterval(getGPS, 1000, state);
 var gpsHandler = setInterval(applyGpsGolds, 1000, state);
 var updateGold = setInterval(displayGolds, 60, state);
 var updateGps = setInterval(displayGps, 60, state);
-var updateShop = setInterval(updateShopView, 1000, state);
-// updateShopView(state);
