@@ -4,8 +4,6 @@
   width: 100%;
   background-color: #8AEB7A;
   border-bottom: gold 3px solid;
+  gap: 5%;
 }
 
-#gold {
-  margin-right: 20px;
-}

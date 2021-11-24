@@ -1,19 +1,33 @@
-export const MULTIPLICATOR = 1.15;
+export const PRICE_MULT = 1.15;
+export const CLICK_MOD = 10;
+export const MINIONS_TYPES_MULT=[5,50,100,250,1000]
 export var defaultMinions = [
     {
         id: 1,
         name: "Hard drive",
         cost: 50,
-        gps: 0.1,
+        default_gps:0.1,
+        gps: 0,
         owned: 0,
         temp: 20,
+        hasPercent: true,
+        maxMemory: 10,
+        type: "MB",
         capacities: [
             {
                 id: 1,
-                name: "Capacity",
+                name: "Quantity",
                 structure: "$owned",
                 value: "",
-                type: "MB",
+                incr: 1,
+                price: 10.0,
+            },
+            {
+                id: 2,
+                name: "Capacity",
+                structure: "$maxMemory",
+                value: "",
+                incr: 2.5,
                 price: 10.0,
             },
         ],
@@ -22,9 +36,12 @@ export var defaultMinions = [
         id: 2,
         name: "Motherboard",
         cost: 150,
-        gps: 0.5,
+        default_gps:0.5,
+        gps: 0,
         owned: 1,
         temp: 30,
+        hasPercent: false,
+        type: "",
         capacities: [
             {
                 id: 1,
@@ -40,16 +57,31 @@ export var defaultMinions = [
         id: 3,
         name: "CPU",
         cost: 500,
+        default_gps:1,
+
         gps: 1,
         owned: 1,
         temp: 45,
+        hasPercent: true,
+        maxMemory: 10,
+        type: "Mhz",
         capacities: [
             {
-                id:1,
+                id: 1,
+                name: "Cores",
+                structure: "$owned",
+                value: "",
+                type: "",
+                incr: 2,
+                price: 300,
+            },
+            {
+                id: 2,
                 name: "Speed",
-                structure: "",
-                value: 1,
+                structure: "$maxMemory",
+                value: "",
                 type: "MHz",
+                incr: 2.75,
                 price: 5,
             },
         ],
@@ -57,25 +89,32 @@ export var defaultMinions = [
     {
         id: 4,
         name: "GPU",
-        cost: 1000,
+        cost: 10,
+        default_gps:3,
+
         gps: 3,
         owned: 0,
         temp: 50,
+        hasPercent: true,
+        maxMemory: 2,
+        type: "GB",
         capacities: [
             {
-                id:1,
-                name: "Capacity",
+                id: 1,
+                name: "Quantity",
                 structure: "$owned",
                 value: "",
-                type: "GB",
+                type: "",
+                incr: 1,
                 price: 500,
             },
             {
-                id:2,
+                id: 2,
                 name: "VRAM",
-                structure: "",
-                value: 4,
+                structure: "$maxMemory",
+                value: "",
                 type: "GB",
+                incr: 2,
                 price: 150,
             },
         ],
@@ -84,16 +123,32 @@ export var defaultMinions = [
         id: 5,
         name: "RAM",
         cost: 75,
+        default_gps:1.25,
+
         gps: 1.25,
         owned: 0,
         temp: 25,
+        hasPercent: true,
+        maxMemory: 4,
+        type: "MB",
+
         capacities: [
             {
                 id: 1,
-                name: "Capacity",
+                name: "Quantity",
                 structure: "$owned",
                 value: "",
+                type: "",
+                incr: 1,
+                price: 50,
+            },
+            {
+                id: 2,
+                name: "Capacity",
+                structure: "$maxMemory",
+                value: "",
                 type: "MB",
+                incr: 4,
                 price: 50,
             },
         ],
@@ -104,7 +159,16 @@ class GameState {
     constructor() {
         this.golds = 0;
         this.gps = 1;
+        this.click_pow = 1;
         this.minions = defaultMinions;
+    }
+
+    getTotalMinion() {
+        let total_minions = 0
+        this.minions.forEach((minion)=>{
+            total_minions+=minion.owned;
+        })
+        return total_minions;
     }
 }
 

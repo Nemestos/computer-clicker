@@ -1,5 +1,4 @@
-import {addGold} from "./GoldsManager.js";
-import {MULTIPLICATOR} from "./State.js";
+import {MINIONS_TYPES_MULT, PRICE_MULT} from "./State.js";
 
 export function getObjectById(array, id) {
     let x = null;
@@ -10,7 +9,16 @@ export function getObjectById(array, id) {
     });
     return x;
 }
+export function handleMultMinions(gameState){
+    gameState.minions.forEach((minion)=>{
+        let inc = 0;
+        MINIONS_TYPES_MULT.forEach((i)=>{
+            inc+=minion.owned>=i-1;
+        })
+        minion.gps=minion.default_gps*2**inc;
+    });
 
+}
 export function buyMinion(evt) {
     let gameState = evt.currentTarget.gameState;
     let id = evt.currentTarget.id_minion;
@@ -32,8 +40,8 @@ export function upgradeCapacity(evt) {
 
     if (cap != null && gameState.golds >= cap.price) {
         gameState.golds -= cap.price;
-        minion.owned += 1;
-        cap.price *= MULTIPLICATOR;
+        minion[cap.structure.slice(1)]+=cap.incr;
+        cap.price *= PRICE_MULT;
     }
 
     updateShopView(gameState);
@@ -45,8 +53,8 @@ export function updateShopView(gameState) {
     gameState.minions.forEach((item) => {
         let [elt, info] = createEmptyMinionItem(minions_list, item);
         updateMinionInfo(info, item, gameState);
-        if(item.owned>0){
-            updateMinionCapacities(elt, item.capacities, item,gameState);
+        if (item.owned > 0) {
+            updateMinionCapacities(elt, item.capacities, item, gameState);
 
         }
     });
@@ -63,16 +71,20 @@ function createEmptyMinionItem(parent, items) {
 }
 
 function updateMinionInfo(infosParent, minion, gameState) {
-    let title = genElement(infosParent, "h3", minion.name);
-    let price = genElement(infosParent, "h4", `Cost : ${minion.cost}`);
+    let title = genElement(infosParent, "h3", `${minion.name}(${minion.gps})`);
     if (minion.owned == 0) {
         let buy = genElement(infosParent, "button", "Buy");
+        let price = genElement(infosParent, "h4", `Cost : ${minion.cost}`);
+
         buy.addEventListener("click", buyMinion);
         buy.gameState = gameState;
         buy.id_minion = minion.id;
-    }
+    } else {
+        if (minion.hasPercent) {
+            let mem = genElement(infosParent, "p", `${minion.maxMemory*minion.owned}${minion.type}`);
+        }
 
-    let mem = genElement(infosParent, "p", "50Mb");
+    }
 }
 
 function updateMinionCapacities(capParent, capacities, minion, gameState) {
