@@ -1,27 +1,37 @@
+@import url(variable.css);
+
 h3 {
   text-align: center;
 }
-#minion-list{
+#minion-list {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 3px;
 }
-.minion-item{
+
+.minion-item {
   display: flex;
   flex-direction: column;
 
   width: 100%;
 }
-.minion-info{
+.minion-info {
   width: 100%;
   display: flex;
   justify-content: space-between;
   background-color: #bab8b8;
 }
-.minion-capacity{
+
+.minion-info-buy {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #979797;
+}
+.minion-capacity {
   display: flex;
 
   justify-content: space-between;
-  background-color:#d8d8d8;
+  background-color: #d8d8d8;
 }

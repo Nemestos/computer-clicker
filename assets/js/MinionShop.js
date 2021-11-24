@@ -11,24 +11,29 @@ export function buyMinion(evt) {
       }
     }
   });
-  console.log(gameState);
+  updateShopView(gameState);
 }
 export function updateShopView(gameState) {
   let minions_list = document.getElementById("minion-list");
   minions_list.innerHTML = "";
   gameState.minions.forEach((item) => {
-    let [elt, info] = createEmptyMinionItem(minions_list);
+    let [elt, info] = createEmptyMinionItem(minions_list, item);
     updateMinionInfo(info, item, gameState);
     updateMinionCapacities(elt, item.capacities, item);
   });
 }
-function createEmptyMinionItem(parent) {
+function createEmptyMinionItem(parent, items) {
   let item = genElement(parent, "div", "", "minion-item");
-  let infos = genElement(item, "div", "", "minion-info");
+  if (items.owned == 0) {
+    var infos = genElement(item, "div", "", "minion-info");
+  } else {
+    var infos = genElement(item, "div", "", "minion-info-buy");
+  }
   return [item, infos];
 }
 function updateMinionInfo(infosParent, minion, gameState) {
   let title = genElement(infosParent, "h3", minion.name);
+  let price = genElement(infosParent, "h4", `Cost : ${minion.cost}`);
   if (minion.owned == 0) {
     let buy = genElement(infosParent, "button", "Buy");
     buy.addEventListener("click", buyMinion);
