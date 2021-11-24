@@ -45,7 +45,10 @@ export function updateShopView(gameState) {
     gameState.minions.forEach((item) => {
         let [elt, info] = createEmptyMinionItem(minions_list, item);
         updateMinionInfo(info, item, gameState);
-        updateMinionCapacities(elt, item.capacities, item,gameState);
+        if(item.owned>0){
+            updateMinionCapacities(elt, item.capacities, item,gameState);
+
+        }
     });
 }
 
