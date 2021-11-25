@@ -203,8 +203,8 @@ class GameState {
     this.golds = 0;
     this.gps = 1;
     this.click_pow = 1;
-    this.minions = defaultMinions;
-    this.clicker = defaultClicker;
+    this.minions = [...defaultMinions];
+    this.clicker = [...defaultClicker];
   }
 
   getTotalMinion() {
