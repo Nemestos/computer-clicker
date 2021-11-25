@@ -13,6 +13,7 @@ export function initListeners(gameState) {
   loadButton.addEventListener("click", (evt) => {
     let selectedId = document.getElementById("existing-saves").value;
     loadSave(selectedId, gameState);
+    reloadView(gameState);
   });
   saveButton.addEventListener("click", (evt) => {
     save(gameState);
