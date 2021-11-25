@@ -1,6 +1,6 @@
 import { GameState } from "./State.js";
 import {
-  //addGold,
+  addGold,
   applyGpsGolds,
   displayClickValue,
   displayGolds,
@@ -16,13 +16,11 @@ import {
   initListeners,
   updateExistingSaves,
 } from "./SaveManager.js";
+import { addEvent, showClicker } from "./ClickerManager.js";
 window.onload = () => {
   sessionStorage.clear();
 };
 
-var saves = getExistingsSaves();
-console.log(saves);
-console.lo;
 var btnAddGold = document.getElementById("clickBtn");
 var state = new GameState();
 btnAddGold.addEventListener("click", () => {
