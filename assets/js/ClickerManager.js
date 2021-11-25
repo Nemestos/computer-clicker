@@ -11,7 +11,7 @@ export function showClicker(gameState) {
       item.appendChild(button);
     }
   });
-  if (i < 5) {
+  if (i < Object.keys(gameState.clicker).length) {
     showUpdateClicker(gameState, i);
   }
 }
