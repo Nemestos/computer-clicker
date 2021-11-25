@@ -9,9 +9,12 @@ export function initListeners(gameState) {
     let loadButton = document.getElementById("load-current");
     let saveButton = document.getElementById("save-current");
     let clearButton = document.getElementById("clear-all");
+    let resetButton = document.getElementById("reset-current")
     loadButton.addEventListener("click", (evt) => {
         let selectedId = document.getElementById("existing-saves").value
         loadSave(selectedId, gameState);
+        updateShopView(gameState);
+
     });
     saveButton.addEventListener("click", (evt) => {
         save(gameState);
@@ -22,6 +25,11 @@ export function initListeners(gameState) {
         resetAllSaves();
         updateExistingSaves();
 
+    })
+    resetButton.addEventListener("click",(evt)=>{
+        gameState.reset();
+        save(gameState);
+        updateShopView(gameState)
     })
 }
 
@@ -70,7 +78,6 @@ export function loadSave(idSave, gameState) {
 
 export function applySave(gameState, loading) {
     gameState.apply(loading);
-    updateShopView(gameState);
 }
 
 export function newSave(gameState) {
