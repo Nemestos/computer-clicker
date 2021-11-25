@@ -1,10 +1,23 @@
 #infos {
     position: sticky;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
     background-color: #8AEB7A;
     border-bottom: gold 3px solid;
     gap: 5%;
+    flex: 1 1 0px;
 }
 
+#infos div {
+    flex-basis: 100%;
+}
+#saves-container{
+    display: flex;
+    gap:20px;
+    justify-content: center;
+    align-items: center;
+}
+#existing-saves{
+    width: 75%;
+}

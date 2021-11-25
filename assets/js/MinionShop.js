@@ -1,4 +1,5 @@
 import {MINIONS_TYPES_MULT, PRICE_MULT} from "./State.js";
+import {genElement} from "./HelperDom.js";
 
 export function getObjectById(array, id) {
     let x = null;
@@ -109,12 +110,3 @@ function updateMinionCapacities(capParent, capacities, minion, gameState) {
     });
 }
 
-function genElement(parent, type, inner, classe = "") {
-    let item = document.createElement(type);
-    if (classe != "") {
-        item.classList.add(classe);
-    }
-    item.innerHTML = inner;
-    parent.appendChild(item);
-    return item;
-}
