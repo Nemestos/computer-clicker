@@ -1,23 +1,30 @@
 #infos {
-    position: sticky;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    background-color: #8AEB7A;
-    border-bottom: gold 3px solid;
-    gap: 5%;
-    flex: 1 1 0px;
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #8aeb7a;
+  border-bottom: gold 3px solid;
+  gap: 5%;
+  flex: 1 1 0px;
 }
 
 #infos div {
-    flex-basis: 100%;
+  flex-basis: 100%;
 }
-#saves-container{
-    display: flex;
-    gap:20px;
-    justify-content: center;
-    align-items: center;
+
+#values-container {
+  display: flex;
+  justify-content: center;
+  background-color: #6db960;
 }
-#existing-saves{
-    width: 75%;
+
+#saves-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+#existing-saves {
+  width: 30%;
 }
