@@ -1,6 +1,6 @@
 import { GameState } from "./State.js";
 import {
-  addGold,
+  //addGold,
   applyGpsGolds,
   displayClickValue,
   displayGolds,
@@ -19,7 +19,7 @@ var state = new GameState();
 updateShopView(state);
 
 showClicker(state);
-addEvent(state, addGold);
+addEvent(state);
 
 var handleGpsMinions = setInterval(handleMultMinions, 60, state);
 var gpsMinions = setInterval(getGPS, 1000, state);

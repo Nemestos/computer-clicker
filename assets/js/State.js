@@ -158,7 +158,7 @@ export var defaultMinions = [
 export var defaultClicker = [
   {
     id: 1,
-    name: "note-bloc",
+    name: "Note-bloc",
     gain: 1,
     cost: 0,
     owned: 1,
