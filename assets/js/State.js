@@ -170,6 +170,14 @@ class GameState {
         })
         return total_minions;
     }
+    toJson(){
+        return Object.getOwnPropertyNames(this).reduce((a, b) => {
+            a[b] = this[b];
+            return a;
+        }, {});
+    }
+    apply(data){
+        Object.assign(this,data);
+    }
 }
-
 export {GameState};

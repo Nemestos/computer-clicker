@@ -14,14 +14,19 @@
     min-height: 0%;
     object-fit: contain;
     cursor: pointer;
-    transition: 0.5s;
+
+    transition-duration: 0.3s;
+    transition-property: transform;
 
 }
 
 #clickImage:hover {
-    transform: scale(75%);
+    transform: scale(85%) rotateZ(30deg);
+    -webkit-transform: scale(85%) rotateZ(30deg);
+
 }
 
 #clickImage:active {
-    transform: scale(110%);
+    transform: scale(105%) rotateZ(-30deg);
+    -webkit-transform: scale(105%) rotateZ(-30deg);
 }
