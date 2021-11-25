@@ -23,13 +23,13 @@
   min-height: 0%;
   object-fit: contain;
   cursor: pointer;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 #clickImage:hover {
-  transform: scale(75%);
+  transform: rotateZ(45deg) scale(85%);
 }
 
 #clickImage:active {
-  transform: scale(110%);
+  transform: rotateZ(-45deg) scale(110%);
 }
