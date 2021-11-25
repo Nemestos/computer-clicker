@@ -21,6 +21,7 @@ var state = new GameState();
 btnAddGold.addEventListener("click", addGold);
 btnAddGold.gameState = state;
 btnAddGold.x = 1;
+
 updateExistingSaves();
 
 initListeners(state);

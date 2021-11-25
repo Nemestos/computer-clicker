@@ -1,17 +1,16 @@
 import {genElement} from "./HelperDom.js";
+import {updateShopView} from "./MinionShop.js";
 
 const SAVES_KEY = "existing_saves";
 const CURRENT_SAVE_KEY = "current_save";
 
 export function initListeners(gameState) {
-    let selected = document.getElementById("existing-saves");
 
-    let selectedId = selected.selectedIndex;
 
     let loadButton = document.getElementById("load-current");
     let saveButton = document.getElementById("save-current");
     loadButton.addEventListener("click", (evt) => {
-        console.log(selectedId)
+        let selectedId = document.getElementById("existing-saves").value
         loadSave(selectedId, gameState);
     });
     saveButton.addEventListener("click", (evt) => {
@@ -58,12 +57,13 @@ export function newSave(gameState) {
 
 export function applySave(gameState, loading) {
     gameState.apply(loading);
+    updateShopView(gameState);
 }
 
 export function loadSave(idSave, gameState) {
     let existing = getExistingsSaves();
-    applySave(gameState, existing);
-    return existing == null ? {} : existing[idSave];
+    sessionStorage.setItem(CURRENT_SAVE_KEY,idSave);
+    applySave(gameState, existing[idSave]);
 }
 
 export function setCurrentSaveSession(idSave) {
