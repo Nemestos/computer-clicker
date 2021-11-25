@@ -6,9 +6,9 @@ const CURRENT_SAVE_KEY = "current_save";
 
 export function initListeners(gameState) {
 
-
     let loadButton = document.getElementById("load-current");
     let saveButton = document.getElementById("save-current");
+    let clearButton = document.getElementById("clear-all");
     loadButton.addEventListener("click", (evt) => {
         let selectedId = document.getElementById("existing-saves").value
         loadSave(selectedId, gameState);
@@ -16,6 +16,12 @@ export function initListeners(gameState) {
     saveButton.addEventListener("click", (evt) => {
         save(gameState);
         updateExistingSaves();
+
+    })
+    clearButton.addEventListener("click", (evt) => {
+        resetAllSaves();
+        updateExistingSaves();
+
     })
 }
 
@@ -29,30 +35,37 @@ export function updateExistingSaves() {
     let saves = getExistingsSaves();
     let select = document.getElementById("existing-saves");
     select.innerHTML = ""
-    console.log(saves);
     saves.forEach((item, i) => {
         let option = genElement(select, "option", i, "save-item");
-        option.setAttribute("value",i)
+        option.setAttribute("value", i)
     });
+}
+
+export function displayCurrentSave() {
+    let ids_span = document.getElementById("current-save-id")
+    let id = getCurrentSaveSession();
+    ids_span.innerText = id == null || id == "" ? "No save loaded" : id;
+
 }
 
 export function save(gameState) {
     let existings = getExistingsSaves();
     let json = gameState.toJson();
     let id = getCurrentSaveSession();
-    if (id != null) {
+
+    if (id != null && id != "") {
         existings[id] = json;
         localStorage.setItem(SAVES_KEY, JSON.stringify(existings));
     } else {
-        newSave(gameState);
+        id = newSave(gameState);
     }
-    return 1
+    setCurrentSaveSession(id);
 }
 
-export function newSave(gameState) {
-    let existings = getExistingsSaves();
-    existings.push(gameState.toJson());
-    localStorage.setItem(SAVES_KEY, JSON.stringify(existings));
+export function loadSave(idSave, gameState) {
+    let existing = getExistingsSaves();
+    setCurrentSaveSession(idSave)
+    applySave(gameState, existing[idSave]);
 }
 
 export function applySave(gameState, loading) {
@@ -60,11 +73,18 @@ export function applySave(gameState, loading) {
     updateShopView(gameState);
 }
 
-export function loadSave(idSave, gameState) {
-    let existing = getExistingsSaves();
-    sessionStorage.setItem(CURRENT_SAVE_KEY,idSave);
-    applySave(gameState, existing[idSave]);
+export function newSave(gameState) {
+    let existings = getExistingsSaves();
+    existings.push(gameState.toJson());
+    localStorage.setItem(SAVES_KEY, JSON.stringify(existings));
+    return existings.length - 1
 }
+
+export function resetAllSaves() {
+    localStorage.setItem(SAVES_KEY, "[]");
+    setCurrentSaveSession("")
+}
+
 
 export function setCurrentSaveSession(idSave) {
     sessionStorage.setItem(CURRENT_SAVE_KEY, idSave);
@@ -75,6 +95,3 @@ export function getCurrentSaveSession() {
     return sessionStorage.getItem(CURRENT_SAVE_KEY);
 }
 
-export function resetAllSaves() {
-    localStorage.setItem(SAVES_KEY, "[]");
-}
