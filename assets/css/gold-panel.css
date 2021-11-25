@@ -1,9 +1,10 @@
-#div-gold {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  background-color: #8AEB7A;
-  border-bottom: gold 3px solid;
-  gap: 5%;
+#infos {
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #8AEB7A;
+    border-bottom: gold 3px solid;
+    gap: 5%;
 }
 

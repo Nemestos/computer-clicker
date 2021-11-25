@@ -10,7 +10,12 @@ import {
     handleClickPow,
 } from "./GoldsManager.js";
 import {handleMultMinions, updateShopView} from "./MinionShop.js";
+import {getExistingsSaves} from "./SaveManager.js";
 
+
+var saves = getExistingsSaves();
+console.log(saves);
+console.lo
 var btnAddGold = document.getElementById("clickBtn");
 var state = new GameState();
 

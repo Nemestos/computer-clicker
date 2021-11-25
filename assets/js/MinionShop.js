@@ -9,16 +9,18 @@ export function getObjectById(array, id) {
     });
     return x;
 }
-export function handleMultMinions(gameState){
-    gameState.minions.forEach((minion)=>{
+
+export function handleMultMinions(gameState) {
+    gameState.minions.forEach((minion) => {
         let inc = 0;
-        MINIONS_TYPES_MULT.forEach((i)=>{
-            inc+=minion.owned>=i-1;
+        MINIONS_TYPES_MULT.forEach((i) => {
+            inc += minion.owned >= i - 1;
         })
-        minion.gps=minion.default_gps*2**inc;
+        minion.gps = minion.default_gps * 2 ** inc;
     });
 
 }
+
 export function buyMinion(evt) {
     let gameState = evt.currentTarget.gameState;
     let id = evt.currentTarget.id_minion;
@@ -40,7 +42,7 @@ export function upgradeCapacity(evt) {
 
     if (cap != null && gameState.golds >= cap.price) {
         gameState.golds -= cap.price;
-        minion[cap.structure.slice(1)]+=cap.incr;
+        minion[cap.structure.slice(1)] += cap.incr;
         cap.price *= PRICE_MULT;
     }
 
@@ -81,7 +83,7 @@ function updateMinionInfo(infosParent, minion, gameState) {
         buy.id_minion = minion.id;
     } else {
         if (minion.hasPercent) {
-            let mem = genElement(infosParent, "p", `${minion.maxMemory*minion.owned}${minion.type}`);
+            let mem = genElement(infosParent, "p", `${minion.maxMemory * minion.owned}${minion.type}`);
         }
 
     }

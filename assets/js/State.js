@@ -1,12 +1,12 @@
 export const PRICE_MULT = 1.15;
 export const CLICK_MOD = 10;
-export const MINIONS_TYPES_MULT=[5,50,100,250,1000]
+export const MINIONS_TYPES_MULT = [5, 50, 100, 250, 1000]
 export var defaultMinions = [
     {
         id: 1,
         name: "Hard drive",
         cost: 50,
-        default_gps:0.1,
+        default_gps: 0.1,
         gps: 0,
         owned: 0,
         temp: 20,
@@ -36,7 +36,7 @@ export var defaultMinions = [
         id: 2,
         name: "Motherboard",
         cost: 150,
-        default_gps:0.5,
+        default_gps: 0.5,
         gps: 0,
         owned: 1,
         temp: 30,
@@ -57,7 +57,7 @@ export var defaultMinions = [
         id: 3,
         name: "CPU",
         cost: 500,
-        default_gps:1,
+        default_gps: 1,
 
         gps: 1,
         owned: 1,
@@ -90,7 +90,7 @@ export var defaultMinions = [
         id: 4,
         name: "GPU",
         cost: 10,
-        default_gps:3,
+        default_gps: 3,
 
         gps: 3,
         owned: 0,
@@ -123,7 +123,7 @@ export var defaultMinions = [
         id: 5,
         name: "RAM",
         cost: 75,
-        default_gps:1.25,
+        default_gps: 1.25,
 
         gps: 1.25,
         owned: 0,
@@ -165,8 +165,8 @@ class GameState {
 
     getTotalMinion() {
         let total_minions = 0
-        this.minions.forEach((minion)=>{
-            total_minions+=minion.owned;
+        this.minions.forEach((minion) => {
+            total_minions += minion.owned;
         })
         return total_minions;
     }
