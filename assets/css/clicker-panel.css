@@ -1,4 +1,27 @@
-#clicker-panel{
+#clicker-panel {
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+#clickBtn {
+    width: fit-content;
+    height: auto;
+}
+
+#clickImage {
+    min-width: 0%;
+    min-height: 0%;
+    object-fit: contain;
+    cursor: pointer;
+    transition: 0.5s;
+
+}
+
+#clickImage:hover {
+    transform: scale(75%);
+}
+
+#clickImage:active {
+    transform: scale(110%);
 }

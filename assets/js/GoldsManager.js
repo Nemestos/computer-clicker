@@ -1,26 +1,47 @@
-import {} from "./State.js";
+import {CLICK_MOD} from "./State.js";
+
+
 export function addGold(evt) {
-  let gameState = evt.currentTarget.gameState;
-  let x = evt.currentTarget.x;
-  gameState.golds += x;
+    let gameState = evt.currentTarget.gameState;
+    let x = evt.currentTarget.x;
+    gameState.golds += x * 2 ** gameState.click_pow;
 }
 
 export function displayGolds(gameState) {
-  let display = document.querySelector("#gold p");
+    let display = document.querySelector("#gold p span");
 
-  display.innerHTML = `Golds : <span>${gameState.golds.toFixed(2)}</span>`;
+    display.innerHTML = `${gameState.golds.toFixed(2)}`;
 }
+
 export function displayGps(gameState) {
-  let display = document.querySelector("#gps p");
+    let display = document.querySelector("#gps p span");
 
-  display.innerHTML = `Gps : <span>${gameState.gps.toFixed(2)}</span>`;
+    display.innerHTML = `${gameState.gps.toFixed(2)}`;
 }
+
+export function handleClickPow(gameState) {
+    gameState.click_pow = Math.floor(gameState.getTotalMinion() / CLICK_MOD);
+}
+
+export function displayClickValue(gameState) {
+    let display = document.querySelector("#click p span");
+
+    display.innerHTML = `${2 ** gameState.click_pow.toFixed(2)}(X${gameState.click_pow + 1})`;
+}
+
+export function displayTotal(gameState) {
+    let display = document.querySelector("#total-minion p span");
+
+    display.innerHTML = `${gameState.getTotalMinion()}`;
+}
+
 export function getGPS(gameState) {
-  gameState.gps = 0;
-  gameState.minions.forEach((item) => {
-    gameState.gps += item.gps * item.owned;
-  });
+    gameState.gps = 0;
+    gameState.minions.forEach((item) => {
+        gameState.gps += item.gps * item.owned;
+    });
 }
+
 export function applyGpsGolds(gameState) {
-  gameState.golds += gameState.gps;
+    gameState.golds += gameState.gps;
 }

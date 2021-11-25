@@ -1,11 +1,23 @@
-#div-gold {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  background-color: #8AEB7A;
-  border-bottom: gold 3px solid;
+#infos {
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #8AEB7A;
+    border-bottom: gold 3px solid;
+    gap: 5%;
+    flex: 1 1 0px;
 }
 
-#gold {
-  margin-right: 20px;
+#infos div {
+    flex-basis: 100%;
+}
+#saves-container{
+    display: flex;
+    gap:20px;
+    justify-content: center;
+    align-items: center;
+}
+#existing-saves{
+    width: 75%;
 }
