@@ -159,7 +159,7 @@ export var defaultClicker = [
   {
     id: 1,
     name: "Note-bloc",
-    gain: 1,
+    gain: 34567890,
     cost: 0,
     owned: 1,
     image: "",

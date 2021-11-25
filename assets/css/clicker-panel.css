@@ -8,6 +8,7 @@
 
 #list-clicker {
   background-color: #d8d8d8;
+  flex-direction: row;
   height: 90%;
   width: 100%;
 }

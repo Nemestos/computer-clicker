@@ -1,10 +1,8 @@
 import { CLICK_MOD } from "./State.js";
 
-//export function addGold(evt) {
-//  let gameState = evt.gameState;
-//  let x = evt.x;
-//  gameState.golds += x * 2 ** gameState.click_pow;
-//}
+export function addGold(gameState, x) {
+  gameState.golds += x;
+}
 
 export function displayGolds(gameState) {
   let display = document.querySelector("#gold p span");
