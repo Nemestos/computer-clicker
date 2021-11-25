@@ -10,17 +10,16 @@ import {
   handleClickPow,
 } from "./GoldsManager.js";
 import { addEvent, showClicker } from "./ClickerManager.js";
-import { updateShopView } from "./MinionShop.js";
 import { handleMultMinions, updateShopView } from "./MinionShop.js";
 import { getExistingsSaves } from "./SaveManager.js";
 
 var saves = getExistingsSaves();
-console.log(saves);
-console.lo;
-var btnAddGold = document.getElementById("clickBtn");
 var state = new GameState();
 
 updateShopView(state);
+
+showClicker(state);
+addEvent(state, addGold);
 
 var handleGpsMinions = setInterval(handleMultMinions, 60, state);
 var gpsMinions = setInterval(getGPS, 1000, state);
