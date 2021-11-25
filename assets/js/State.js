@@ -92,11 +92,55 @@ export var defaultMinions = [
     ],
   },
 ];
+
+export var defaultClicker = [
+  {
+    id: 1,
+    name: "note-bloc",
+    gain: 1,
+    cost: 0,
+    owned: 1,
+    image: "",
+  },
+  {
+    id: 2,
+    name: "EMACS",
+    gain: 2,
+    cost: 200,
+    owned: 0,
+    image: "",
+  },
+  {
+    id: 3,
+    name: "VIM",
+    gain: 4,
+    cost: 500,
+    owned: 0,
+    image: "",
+  },
+  {
+    id: 4,
+    name: "Notepad++",
+    gain: 6,
+    cost: 1000,
+    owned: 0,
+    image: "",
+  },
+  {
+    id: 5,
+    name: "Visual Studio Code",
+    gain: 8,
+    cost: 3000,
+    owned: 0,
+    image: "",
+  },
+];
 class GameState {
   constructor() {
     this.golds = 0;
     this.gps = 1;
     this.minions = defaultMinions;
+    this.clicker = defaultClicker;
   }
 }
 
