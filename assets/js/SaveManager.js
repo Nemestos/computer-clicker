@@ -1,4 +1,4 @@
-import { showClicker } from "./ClickerManager.js";
+import { addEvent, showClicker } from "./ClickerManager.js";
 import { genElement } from "./HelperDom.js";
 import { updateShopView } from "./MinionShop.js";
 
@@ -13,27 +13,28 @@ export function initListeners(gameState) {
   loadButton.addEventListener("click", (evt) => {
     let selectedId = document.getElementById("existing-saves").value;
     loadSave(selectedId, gameState);
-    updateShopView(gameState);
-    showClicker(gameState);
   });
   saveButton.addEventListener("click", (evt) => {
     save(gameState);
     updateExistingSaves();
+    reloadView(gameState);
   });
   clearButton.addEventListener("click", (evt) => {
     resetAllSaves();
     updateExistingSaves();
-    updateShopView(gameState);
-    showClicker(gameState);
+    reloadView(gameState);
   });
   resetButton.addEventListener("click", (evt) => {
     gameState.reset();
     save(gameState);
-    updateShopView(gameState);
-    showClicker(gameState);
+    reloadView(gameState);
   });
 }
-
+function reloadView(gameState) {
+  updateShopView(gameState);
+  showClicker(gameState);
+  addEvent(gameState);
+}
 export function getExistingsSaves() {
   let saves = localStorage.getItem(SAVES_KEY);
 
