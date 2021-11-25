@@ -2,6 +2,7 @@ Clicker Début> Terminal
 Possibilité d'installer de nouveau clicker correspondant à des logiciels:
     Bloc-Note
     Emacs
+    VIM
     NotePad++
     Visual Studio Code
 
