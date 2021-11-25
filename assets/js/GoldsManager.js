@@ -1,8 +1,7 @@
 import { CLICK_MOD } from "./State.js";
 
-export function addGold(gameState,x) {
-
-  gameState.golds += x * 2 ** gameState.click_pow;
+export function addGold(gameState, x) {
+  gameState.golds += x;
 }
 
 export function displayGolds(gameState) {
