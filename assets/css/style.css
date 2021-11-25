@@ -3,58 +3,55 @@
 @import url(minion-panel.css);
 
 * {
-
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
-
 body {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 html {
-    margin: 0;
-    font-family: "Noto Sans";
+  margin: 0;
+  font-family: "Noto Sans";
 }
 
 body {
-    margin: 0px;
-    min-height: 100vh;
-    width: 100%;
+  margin: 0px;
+  min-height: 100vh;
+  width: 100%;
 }
 
 main {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
 
 button {
-    font-family: "Shippori Antique";
-    padding: 15px;
-    height: fit-content;
-    width: fit-content;
-
+  font-family: "Shippori Antique";
+  padding: 15px;
+  height: fit-content;
+  width: fit-content;
 }
 
 span {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 #game-content {
-    padding: 5px;
-    display: flex;
-    gap: 10px;
-    width: 100%;
-    height: 100%;
-    background-color: #F2F2F2;
+  padding: 5px;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: #f2f2f2;
 }
 
 .game-item {
-    height: 100%;
-    width: 50%;
+  height: 100%;
+  width: 50%;
 }
