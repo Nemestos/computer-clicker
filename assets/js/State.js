@@ -17,7 +17,8 @@ export var defaultMinions = [
       {
         id: 1,
         name: "Quantity",
-        structure: "$owned",
+        structure: "$parent.owned",
+        value_type: "one",
         value: "",
         incr: 1,
         price: 10.0,
@@ -25,7 +26,8 @@ export var defaultMinions = [
       {
         id: 2,
         name: "Capacity",
-        structure: "$maxMemory",
+        structure: "$parent.maxMemory",
+        value_type: "one",
         value: "",
         incr: 2.5,
         price: 10.0,
@@ -46,9 +48,19 @@ export var defaultMinions = [
       {
         id: 1,
         name: "Supported os",
-        structure: "",
-        value: "Hannah montana linux",
-        type: "",
+        structure: "$this.values",
+        value_type: "multiples",
+        values: [
+          "Hannah montana linux",
+          "Apartheid linux",
+          "Ubuntu Satanic edition",
+          "Gentoo",
+          "Linux from scratch",
+          "Temple os",
+          "Arch linux epita edition",
+        ],
+        value: "",
+        current_value: 0,
         price: 500.0,
       },
     ],
@@ -69,16 +81,17 @@ export var defaultMinions = [
       {
         id: 1,
         name: "Cores",
-        structure: "$owned",
+        structure: "$parent.owned",
+        value_type: "one",
         value: "",
-        type: "",
         incr: 2,
         price: 300,
       },
       {
         id: 2,
         name: "Speed",
-        structure: "$maxMemory",
+        structure: "$parent.maxMemory",
+        value_type: "one",
         value: "",
         type: "MHz",
         incr: 2.75,
@@ -102,7 +115,8 @@ export var defaultMinions = [
       {
         id: 1,
         name: "Quantity",
-        structure: "$owned",
+        structure: "$parent.owned",
+        value_type: "one",
         value: "",
         type: "",
         incr: 1,
@@ -111,7 +125,8 @@ export var defaultMinions = [
       {
         id: 2,
         name: "VRAM",
-        structure: "$maxMemory",
+        structure: "$parent.maxMemory",
+        value_type: "one",
         value: "",
         type: "GB",
         incr: 2,
@@ -136,7 +151,8 @@ export var defaultMinions = [
       {
         id: 1,
         name: "Quantity",
-        structure: "$owned",
+        structure: "$parent.owned",
+        value_type: "one",
         value: "",
         type: "",
         incr: 1,
@@ -145,7 +161,8 @@ export var defaultMinions = [
       {
         id: 2,
         name: "Capacity",
-        structure: "$maxMemory",
+        structure: "$parent.maxMemory",
+        value_type: "one",
         value: "",
         type: "MB",
         incr: 4,
@@ -163,7 +180,7 @@ export var defaultClicker = [
     cost: 50,
     owned: 0,
     heat: 3,
-    image: "",
+    image: "assets/img/notepad-logo.jpeg",
   },
   {
     id: 2,
@@ -172,7 +189,7 @@ export var defaultClicker = [
     cost: 200,
     owned: 0,
     heat: 5,
-    image: "",
+    image: "assets/img/emacs-logo.png",
   },
   {
     id: 3,
@@ -181,7 +198,7 @@ export var defaultClicker = [
     cost: 500,
     owned: 0,
     heat: 6,
-    image: "",
+    image: "assets/img/vim-logo.png",
   },
   {
     id: 4,
@@ -190,7 +207,7 @@ export var defaultClicker = [
     cost: 1000,
     owned: 0,
     heat: 8,
-    image: "",
+    image: "assets/img/notepad++-logo.png",
   },
   {
     id: 5,
@@ -199,7 +216,7 @@ export var defaultClicker = [
     cost: 3000,
     owned: 0,
     heat: 10,
-    image: "",
+    image: "assets/img/vs-code-logo.png",
   },
 ];
 

@@ -24,11 +24,6 @@ html {
   font-family: "Noto Sans";
 }
 
-#right-part {
-  width: 50%;
-  height: 100%;
-}
-
 body {
   margin: 0px;
   min-height: 100vh;

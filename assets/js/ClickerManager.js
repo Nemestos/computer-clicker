@@ -1,5 +1,7 @@
 import { addGold } from "./GoldsManager.js";
 import { ClickerHeatManager } from "./HeatManager.js";
+import { genElement } from "./HelperDom.js";
+
 export function showClicker(gameState) {
   var item = document.getElementById("list-clicker");
   var i = 0;
@@ -7,11 +9,14 @@ export function showClicker(gameState) {
   gameState.clicker.forEach((clicker) => {
     if (clicker.owned == 1) {
       i += 1;
-      let button = document.createElement("button");
-      button.innerHTML = `${clicker.name}`;
-      button.classList.add("button-clicker");
-      button.setAttribute("id", `clicker${clicker.id}`);
-      item.appendChild(button);
+      let a = genElement(item, "a", "", "button-clicker");
+      // button.innerHTML = `${clicker.name}`;
+      // button.classList.add("button-clicker");
+      a.setAttribute("id", `clicker${clicker.id}`);
+      let img = genElement(a, "img", "");
+      img.setAttribute("src", clicker.image);
+      img.classList.add("clickImage");
+      img.classList.add("app-item");
     }
   });
   if (i < Object.keys(gameState.clicker).length) {

@@ -22,12 +22,11 @@ window.onload = () => {
   sessionStorage.clear();
 };
 
-var btnAddGold = document.getElementById("clickBtn");
+var btnAddGold = document.getElementById("main-click-btn");
 var state = new GameState();
 btnAddGold.addEventListener("click", () => {
   addGold(state, 2 ** state.click_pow);
 });
-
 updateExistingSaves();
 
 initListeners(state);

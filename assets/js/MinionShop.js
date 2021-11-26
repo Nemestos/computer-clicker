@@ -34,16 +34,27 @@ export function buyMinion(evt) {
     }
 }
 
+function handleCapacityStructureUpdate(cap, minion) {
+    let struct = cap.structure.split(".")
+    let source = struct[0] == "$parent" ? minion : cap;
+    if (cap.value_type == "one") {
+        source[struct[1]] += cap.incr;
+    } else {
+        cap.current_value=Math.min(source[struct[1]].length - 1, cap.current_value + 1);
+    }
+}
+
 export function upgradeCapacity(evt) {
     let gameState = evt.currentTarget.gameState;
     let minion = evt.currentTarget.minion;
     let id = evt.currentTarget.id;
 
     let cap = getObjectById(minion.capacities, id)
-
     if (cap != null && gameState.golds >= cap.price) {
         gameState.golds -= cap.price;
-        minion[cap.structure.slice(1)] += cap.incr;
+
+        handleCapacityStructureUpdate(cap, minion)
+
         cap.price *= PRICE_MULT;
     }
 
@@ -93,10 +104,11 @@ function updateMinionInfo(infosParent, minion, gameState) {
 function updateMinionCapacities(capParent, capacities, minion, gameState) {
     capacities.forEach((cap) => {
         let capItem = genElement(capParent, "div", "", "minion-capacity");
-        let structure = cap["structure"];
-        if (structure[0] == "$") {
-            cap["value"] = minion[cap["structure"].slice(1)];
-        }
+        let structure = cap.structure.split(".");
+        let source = structure[0] == "$parent" ? minion : cap
+        let finalValue = cap.value_type == "one" ? source[structure[1]] : source[structure[1]][cap.current_value];
+        cap["value"] = finalValue;
+
 
         let name = genElement(capItem, "p", cap.name);
         let value = genElement(capItem, "p", cap.value);
