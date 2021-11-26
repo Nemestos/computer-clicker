@@ -62,7 +62,7 @@ export function createHeatSection(gameState) {
         if (cooler.owned === 1) {
             genElement(divcooler, "h4", 'Speed', "");
             genElement(divcooler, "p", `${cooler.upgrade}`, "");
-            genElement(divcooler, "p", `${cooler.cost}$`, "");
+            genElement(divcooler, "p", `${cooler.cost.toFixed(2)}$`, "");
             let button = genElement(divcooler, "button", 'Upgrade');
             button.setAttribute('id', "upgrade-cooler");
         }
