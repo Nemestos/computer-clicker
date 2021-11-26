@@ -1,6 +1,8 @@
 import { addEvent, showClicker } from "./ClickerManager.js";
 import { genElement } from "./HelperDom.js";
 import { updateShopView } from "./MinionShop.js";
+import {createHeatSection} from "./HeatManager.js";
+import {createPowerSection} from "./PowerManager.js";
 
 const SAVES_KEY = "existing_saves";
 const CURRENT_SAVE_KEY = "current_save";
@@ -32,6 +34,8 @@ export function initListeners(gameState) {
   });
 }
 function reloadView(gameState) {
+  createHeatSection(gameState);
+  createPowerSection(gameState)
   updateShopView(gameState);
   showClicker(gameState);
   addEvent(gameState);
