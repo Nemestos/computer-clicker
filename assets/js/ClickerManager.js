@@ -1,4 +1,5 @@
 import { addGold } from "./GoldsManager.js";
+import { ClickerHeatManager } from "./HeatManager.js";
 export function showClicker(gameState) {
   var item = document.getElementById("list-clicker");
   var i = 0;
@@ -47,6 +48,7 @@ function showUpdateClicker(gameState, identifier) {
           gameState.golds -= clicker.cost;
           showClicker(gameState);
           addEvent(gameState);
+          ClickerHeatManager(gameState);
         }
       }
     });

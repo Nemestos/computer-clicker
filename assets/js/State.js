@@ -162,6 +162,7 @@ export var defaultClicker = [
     gain: 33333,
     cost: 50,
     owned: 0,
+    heat: 3,
     image: "",
   },
   {
@@ -170,6 +171,7 @@ export var defaultClicker = [
     gain: 2,
     cost: 200,
     owned: 0,
+    heat: 5,
     image: "",
   },
   {
@@ -178,6 +180,7 @@ export var defaultClicker = [
     gain: 4,
     cost: 500,
     owned: 0,
+    heat: 6,
     image: "",
   },
   {
@@ -186,6 +189,7 @@ export var defaultClicker = [
     gain: 6,
     cost: 1000,
     owned: 0,
+    heat: 8,
     image: "",
   },
   {
@@ -194,6 +198,7 @@ export var defaultClicker = [
     gain: 8,
     cost: 3000,
     owned: 0,
+    heat: 10,
     image: "",
   },
 ];
@@ -205,6 +210,7 @@ class GameState {
     this.click_pow = 1;
     this.minions = [...defaultMinions];
     this.clicker = [...defaultClicker];
+    this.heat = 0;
   }
 
   getTotalMinion() {

@@ -1,6 +1,7 @@
 @import url(variable.css);
 @import url(gold-panel.css);
 @import url(minion-panel.css);
+@import url(computer-panel.css);
 
 * {
   box-sizing: border-box;
