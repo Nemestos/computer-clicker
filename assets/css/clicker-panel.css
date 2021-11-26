@@ -21,9 +21,10 @@
 #list-clicker > button {
     height: 100%;
     width: 20%;
-    d
+
 }
 .app-item{
+    filter: drop-shadow(0 0 0.50rem black);
     max-width: 100%;
     max-height: 100%;
 }

@@ -7,6 +7,7 @@ export var defaultMinions = [
     name: "Hard drive",
     cost: 50,
     default_gps: 0.1,
+    default_power: 5,
     gps: 0.1,
     owned: 0,
     temp: 20,
@@ -38,6 +39,7 @@ export var defaultMinions = [
     id: 2,
     name: "Motherboard",
     cost: 150,
+    default_power: 20,
     default_gps: 0.5,
     gps: 0.5,
     owned: 1,
@@ -62,7 +64,7 @@ export var defaultMinions = [
     name: "CPU",
     cost: 500,
     default_gps: 1,
-
+    default_power: 125,
     gps: 1,
     owned: 1,
     temp: 45,
@@ -96,7 +98,7 @@ export var defaultMinions = [
     name: "GPU",
     cost: 10,
     default_gps: 3,
-
+    default_power: 250,
     gps: 3,
     owned: 0,
     temp: 50,
@@ -131,7 +133,7 @@ export var defaultMinions = [
     name: "RAM",
     cost: 75,
     default_gps: 1.25,
-
+    default_power: 25,
     gps: 1.25,
     owned: 0,
     temp: 25,
