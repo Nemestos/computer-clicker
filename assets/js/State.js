@@ -19,7 +19,7 @@ export var defaultMinions = [
         id: 1,
         name: "Quantity",
         structure: "$parent.owned",
-        value_type:"one",
+        value_type: "one",
         value: "",
         incr: 1,
         price: 10.0,
@@ -28,7 +28,7 @@ export var defaultMinions = [
         id: 2,
         name: "Capacity",
         structure: "$parent.maxMemory",
-        value_type:"one",
+        value_type: "one",
         value: "",
         incr: 2.5,
         price: 10.0,
@@ -52,9 +52,17 @@ export var defaultMinions = [
         name: "Supported os",
         structure: "$this.values",
         value_type: "multiples",
-        values: ["Hannah montana linux","Apartheid linux","Ubuntu Satanic edition","Gentoo","Linux from scratch","Temple os","Arch linux epita edition"],
+        values: [
+          "Hannah montana linux",
+          "Apartheid linux",
+          "Ubuntu Satanic edition",
+          "Gentoo",
+          "Linux from scratch",
+          "Temple os",
+          "Arch linux epita edition",
+        ],
         value: "",
-        current_value:0,
+        current_value: 0,
         price: 500.0,
       },
     ],
@@ -173,6 +181,7 @@ export var defaultClicker = [
     gain: 33333,
     cost: 50,
     owned: 0,
+    heat: 3,
     image: "assets/img/notepad-logo.jpeg",
   },
   {
@@ -181,6 +190,7 @@ export var defaultClicker = [
     gain: 2,
     cost: 200,
     owned: 0,
+    heat: 5,
     image: "assets/img/emacs-logo.png",
   },
   {
@@ -189,6 +199,7 @@ export var defaultClicker = [
     gain: 4,
     cost: 500,
     owned: 0,
+    heat: 6,
     image: "assets/img/vim-logo.png",
   },
   {
@@ -197,6 +208,7 @@ export var defaultClicker = [
     gain: 6,
     cost: 1000,
     owned: 0,
+    heat: 8,
     image: "assets/img/notepad++-logo.png",
   },
   {
@@ -205,6 +217,7 @@ export var defaultClicker = [
     gain: 8,
     cost: 3000,
     owned: 0,
+    heat: 10,
     image: "assets/img/vs-code-logo.png",
   },
 ];
@@ -216,6 +229,7 @@ class GameState {
     this.click_pow = 1;
     this.minions = [...defaultMinions];
     this.clicker = [...defaultClicker];
+    this.heat = 0;
   }
 
   getTotalMinion() {

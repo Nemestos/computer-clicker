@@ -1,5 +1,6 @@
 import { addGold } from "./GoldsManager.js";
-import {genElement} from "./HelperDom.js";
+import { ClickerHeatManager } from "./HeatManager.js";
+import { genElement } from "./HelperDom.js";
 
 export function showClicker(gameState) {
   var item = document.getElementById("list-clicker");
@@ -8,14 +9,14 @@ export function showClicker(gameState) {
   gameState.clicker.forEach((clicker) => {
     if (clicker.owned == 1) {
       i += 1;
-      let a = genElement(item,"a","","button-clicker");
+      let a = genElement(item, "a", "", "button-clicker");
       // button.innerHTML = `${clicker.name}`;
       // button.classList.add("button-clicker");
       a.setAttribute("id", `clicker${clicker.id}`);
-      let img = genElement(a,"img","")
-      img.setAttribute("src",clicker.image);
-      img.classList.add("clickImage")
-      img.classList.add("app-item")
+      let img = genElement(a, "img", "");
+      img.setAttribute("src", clicker.image);
+      img.classList.add("clickImage");
+      img.classList.add("app-item");
     }
   });
   if (i < Object.keys(gameState.clicker).length) {
@@ -52,6 +53,7 @@ function showUpdateClicker(gameState, identifier) {
           gameState.golds -= clicker.cost;
           showClicker(gameState);
           addEvent(gameState);
+          ClickerHeatManager(gameState);
         }
       }
     });
