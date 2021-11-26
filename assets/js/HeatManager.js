@@ -76,7 +76,6 @@ export function upgradeCooler(gameState) {
         gameState.cooler.forEach( cooler => {
             if (cooler.owned === 1) {
                 if (gameState.golds >= cooler.cost) {
-
                     gameState.golds -= cooler.cost
                     cooler.cost *= 1.10;
                     cooler.upgrade += 1;

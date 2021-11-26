@@ -37,7 +37,11 @@ export function displayTotal(gameState) {
 export function getGPS(gameState) {
   gameState.gps = 0;
   gameState.minions.forEach((item) => {
-    gameState.gps += item.gps * item.owned;
+    if (gameState.heat >= 80) {
+      gameState.gps += (item.gps * item.owned) / 2;
+    } else {
+      gameState.gps += item.gps * item.owned;
+    }
   });
 }
 
