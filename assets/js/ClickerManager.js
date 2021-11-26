@@ -46,6 +46,7 @@ function showUpdateClicker(gameState, identifier) {
   button.setAttribute("id", "clicker-update");
   item.appendChild(button);
   button.addEventListener("click", (event) => {
+
     gameState.clicker.forEach((clicker) => {
       if (clicker.id == identifier + 1) {
         if (gameState.golds >= clicker.cost) {

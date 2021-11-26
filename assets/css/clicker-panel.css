@@ -53,6 +53,8 @@
     align-items: center;
 }
 #main-click-img{
+    width: fit-content;
+    height: fit-content;
     height: auto;
 }
 #main-click{
