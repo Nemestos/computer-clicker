@@ -1,6 +1,6 @@
 import {genElement} from "./HelperDom.js";
 import {GameState} from "./State.js";
-
+export const OVERHEAT =80;
 export function MinionHeatManager(gameState) {
     let x = 0;
     gameState.minions.forEach((minion) => {
@@ -89,5 +89,8 @@ export function upgradeCooler(gameState) {
 export function tempUpdate (gameState) {
    let update = document.getElementById('tempUpdate');
    update.innerHTML = `(${gameState.temp.toFixed(1)}°C)`
+    if(gameState.temp>=OVERHEAT){
+        update.innerHTML+=` (overheat !)`
+    }
 
 }

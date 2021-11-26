@@ -1,4 +1,5 @@
 import { CLICK_MOD } from "./State.js";
+import {OVERHEAT} from "./HeatManager.js";
 
 export function addGold(gameState, x) {
   gameState.golds += x;
@@ -37,8 +38,9 @@ export function displayTotal(gameState) {
 export function getGPS(gameState) {
   gameState.gps = 0;
   gameState.minions.forEach((item) => {
-    if (gameState.heat >= 80) {
+    if (gameState.heat >= OVERHEAT) {
       gameState.gps += (item.gps * item.owned) / 2;
+
     } else {
       gameState.gps += item.gps * item.owned;
     }
