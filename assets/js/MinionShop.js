@@ -40,7 +40,7 @@ function handleCapacityStructureUpdate(cap, minion) {
     if (cap.value_type == "one") {
         source[struct[1]] += cap.incr;
     } else {
-        cap.current_value=Math.min(source[struct[1]].length - 1, cap.current_value + 1);
+        cap.current_value = Math.min(source[struct[1]].length - 1, cap.current_value + 1);
     }
 }
 
@@ -101,23 +101,46 @@ function updateMinionInfo(infosParent, minion, gameState) {
     }
 }
 
+function getNextValue(source, cap) {
+    let structure = cap.structure.split(".")
+    if (cap.value_type == "one") {
+        return Number.parseInt(source[structure[1]]) + cap.incr;
+    } else {
+        let values = source[structure[1]]
+        return cap.current_value == values.length - 1 ? "x" : values[cap.current_value + 1]
+    }
+}
+
+function hoverUpgrateNext(nextValue) {
+
+}
+
 function updateMinionCapacities(capParent, capacities, minion, gameState) {
     capacities.forEach((cap) => {
         let capItem = genElement(capParent, "div", "", "minion-capacity");
         let structure = cap.structure.split(".");
         let source = structure[0] == "$parent" ? minion : cap
         let finalValue = cap.value_type == "one" ? source[structure[1]] : source[structure[1]][cap.current_value];
+        let next = getNextValue(source, cap)
         cap["value"] = finalValue;
-
-
         let name = genElement(capItem, "p", cap.name);
         let value = genElement(capItem, "p", cap.value);
         let price = genElement(capItem, "p", `${cap.price.toFixed(2)}$`);
-        let upgrade = genElement(capItem, "button", "Upgrade");
-        upgrade.addEventListener("click", upgradeCapacity);
-        upgrade.gameState = gameState;
-        upgrade.minion = minion;
-        upgrade.id = cap.id
+        if (next != "x") {
+            let upgrade = genElement(capItem, "button", "Upgrade");
+
+            upgrade.addEventListener("click", (upgradeCapacity));
+            upgrade.addEventListener("mouseover", () => {
+                genElement(value, "label", `->${next}`);
+            })
+            upgrade.addEventListener("mouseleave", () => {
+                value.children[0].remove()
+            })
+            upgrade.gameState = gameState;
+            upgrade.minion = minion;
+            upgrade.id = cap.id
+        }
+
 
     });
 }
