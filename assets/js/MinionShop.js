@@ -1,6 +1,9 @@
 import {MINIONS_TYPES_MULT, PRICE_MULT} from "./State.js";
 import {genElement} from "./HelperDom.js";
 
+export function getMinionPower(minion){
+    return minion.default_power*minion.owned;
+}
 export function getObjectById(array, id) {
     let x = null;
     array.forEach((element) => {
@@ -22,12 +25,10 @@ export function handleMultMinions(gameState) {
 
 }
 
-export function buyMinion(evt) {
-    let gameState = evt.currentTarget.gameState;
-    let id = evt.currentTarget.id_minion;
-    let minion = getObjectById(gameState.minions, id);
+export function buyMinion(gameState,id) {
 
-    if (minion != null && gameState.golds >= minion.cost) {
+    let minion = getObjectById(gameState.minions, id);
+    if (minion != null && gameState.golds >= minion.cost && gameState.power+minion.default_power<=gameState.maxPower) {
         gameState.golds -= minion.cost;
         minion.owned += 1;
         updateShopView(gameState);
@@ -44,13 +45,10 @@ function handleCapacityStructureUpdate(cap, minion) {
     }
 }
 
-export function upgradeCapacity(evt) {
-    let gameState = evt.currentTarget.gameState;
-    let minion = evt.currentTarget.minion;
-    let id = evt.currentTarget.id;
+export function upgradeCapacity(gameState,minion,id) {
 
     let cap = getObjectById(minion.capacities, id)
-    if (cap != null && gameState.golds >= cap.price) {
+    if (cap != null && gameState.golds >= cap.price && gameState.power+minion.default_power<=gameState.maxPower) {
         gameState.golds -= cap.price;
 
         handleCapacityStructureUpdate(cap, minion)
@@ -62,7 +60,7 @@ export function upgradeCapacity(evt) {
 }
 
 export function updateShopView(gameState) {
-    let minions_list = document.getElementById("minion-list");
+    let minions_list = document.querySelector(".data-list");
     minions_list.innerHTML = "";
     gameState.minions.forEach((item) => {
         let [elt, info] = createEmptyMinionItem(minions_list, item);
@@ -77,22 +75,23 @@ export function updateShopView(gameState) {
 function createEmptyMinionItem(parent, items) {
     let item = genElement(parent, "div", "", "minion-item");
     if (items.owned == 0) {
-        var infos = genElement(item, "div", "", "minion-info");
+        var infos = genElement(item, "div", "", "data-info");
     } else {
-        var infos = genElement(item, "div", "", "minion-info-buy");
+        var infos = genElement(item, "div", "", "data-info-buy");
     }
     return [item, infos];
 }
 
 function updateMinionInfo(infosParent, minion, gameState) {
-    let title = genElement(infosParent, "h3", `${minion.name}(${minion.gps})`);
+    let title = genElement(infosParent, "h3", `${minion.name}(${minion.gps*minion.owned}/s)(${getMinionPower(minion).toFixed(2)}W)(${minion.temp}C)`);
     if (minion.owned == 0) {
         let buy = genElement(infosParent, "button", "Buy");
         let price = genElement(infosParent, "h4", `Cost : ${minion.cost}`);
 
-        buy.addEventListener("click", buyMinion);
-        buy.gameState = gameState;
-        buy.id_minion = minion.id;
+        buy.addEventListener("click",(evt)=>{
+            buyMinion(gameState,minion.id)
+        });
+
     } else {
         if (minion.hasPercent) {
             let mem = genElement(infosParent, "p", `${minion.maxMemory * minion.owned}${minion.type}`);
@@ -111,13 +110,11 @@ function getNextValue(source, cap) {
     }
 }
 
-function hoverUpgrateNext(nextValue) {
 
-}
 
 function updateMinionCapacities(capParent, capacities, minion, gameState) {
     capacities.forEach((cap) => {
-        let capItem = genElement(capParent, "div", "", "minion-capacity");
+        let capItem = genElement(capParent, "div", "", "data-item");
         let structure = cap.structure.split(".");
         let source = structure[0] == "$parent" ? minion : cap
         let finalValue = cap.value_type == "one" ? source[structure[1]] : source[structure[1]][cap.current_value];
@@ -129,16 +126,17 @@ function updateMinionCapacities(capParent, capacities, minion, gameState) {
         if (next != "x") {
             let upgrade = genElement(capItem, "button", "Upgrade");
 
-            upgrade.addEventListener("click", (upgradeCapacity));
+            upgrade.addEventListener("click", ()=>{
+                upgradeCapacity(gameState,minion,cap.id)
+            });
             upgrade.addEventListener("mouseover", () => {
                 genElement(value, "label", `->${next}`);
             })
             upgrade.addEventListener("mouseleave", () => {
                 value.children[0].remove()
             })
-            upgrade.gameState = gameState;
-            upgrade.minion = minion;
-            upgrade.id = cap.id
+
+
         }
 
 

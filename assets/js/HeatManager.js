@@ -1,6 +1,8 @@
 import {genElement} from "./HelperDom.js";
-import {GameState} from "./State.js";
-export const OVERHEAT =80;
+import {GameState, PRICE_MULT} from "./State.js";
+
+export const OVERHEAT = 80;
+
 export function MinionHeatManager(gameState) {
     let x = 0;
     gameState.minions.forEach((minion) => {
@@ -19,7 +21,7 @@ export function CoolManager(gameState) {
 }
 
 export function TempManager(gameState) {
-    gameState.temp = (gameState.heat / gameState.cool)*100;
+    gameState.temp = (gameState.heat / gameState.cool) * 100;
 }
 
 export function mergeHeat(gameState) {
@@ -50,21 +52,27 @@ export function ClickerHeatManager(gameState) {
 export function createHeatSection(gameState) {
     let div = document.getElementById('heat-panel');
     div.innerHTML = '';
+
+    let divcooler = genElement(div, "div", '', "data-list");
+
     gameState.cooler.forEach((cooler) => {
         if (cooler.owned === 1) {
-            let title = genElement(div, "h3", `${cooler.name}<span id="tempUpdate"></span>`, "");
+            let info = genElement(divcooler,"div","","data-info")
+            let title = genElement(info, "h3", `${cooler.name}<span id="tempUpdate"></span>`, "");
             title.setAttribute('id', "title-temp")
 
         }
     })
-    let divcooler = genElement(div, "div", '', "cooler-list");
     gameState.cooler.forEach((cooler) => {
         if (cooler.owned === 1) {
-            genElement(divcooler, "h4", 'Speed', "");
-            genElement(divcooler, "p", `${cooler.upgrade}`, "");
-            genElement(divcooler, "p", `${cooler.cost.toFixed(2)}$`, "");
-            let button = genElement(divcooler, "button", 'Upgrade');
+            let item = genElement(divcooler,"div","","data-item")
+
+            genElement(item, "h4", 'Speed', "");
+            genElement(item, "p", `${cooler.upgrade}`, "");
+            genElement(item, "p", `${cooler.cost}$`, "");
+            let button = genElement(item, "button", 'Upgrade');
             button.setAttribute('id', "upgrade-cooler");
+        }else{
         }
     })
     upgradeCooler(gameState);
@@ -72,12 +80,12 @@ export function createHeatSection(gameState) {
 
 export function upgradeCooler(gameState) {
     let upgrade = document.getElementById("upgrade-cooler");
-    upgrade.addEventListener('click', function() {
-        gameState.cooler.forEach( cooler => {
+    upgrade.addEventListener('click', function () {
+        gameState.cooler.forEach(cooler => {
             if (cooler.owned === 1) {
                 if (gameState.golds >= cooler.cost) {
                     gameState.golds -= cooler.cost
-                    cooler.cost *= 1.10;
+                    cooler.cost *= PRICE_MULT;
                     cooler.upgrade += 1;
                     createHeatSection(gameState);
                 }
@@ -86,11 +94,11 @@ export function upgradeCooler(gameState) {
     })
 }
 
-export function tempUpdate (gameState) {
-   let update = document.getElementById('tempUpdate');
-   update.innerHTML = `(${gameState.temp.toFixed(1)}°C)`
-    if(gameState.temp>=OVERHEAT){
-        update.innerHTML+=` (overheat !)`
+export function tempUpdate(gameState) {
+    let update = document.getElementById('tempUpdate');
+    update.innerHTML = `(${gameState.temp.toFixed(1)}°C)`
+    if (gameState.temp >= OVERHEAT) {
+        update.innerHTML += ` (overheat !)`
     }
 
 }

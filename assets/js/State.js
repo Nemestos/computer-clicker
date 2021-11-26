@@ -142,6 +142,7 @@ export var defaultMinions = [
     cost: 75,
     default_gps: 1.25,
     default_power: 25,
+
     gps: 1.25,
     owned: 0,
     temp: 25,
@@ -241,6 +242,16 @@ export var defaultCooler = [
       cost: 1000,
     }
 ]
+export var defaultPower=[
+  {
+    id:1,
+    name:"Power",
+    owned:1,
+    powering:300,
+    incr:50,
+    cost:100
+  }
+]
 
 class GameState {
   constructor() {
@@ -250,11 +261,15 @@ class GameState {
     this.minions = [...defaultMinions];
     this.clicker = [...defaultClicker];
     this.cooler = [...defaultCooler];
+    this.powers = [...defaultPower];
+
     this.heat = 0;
     this.heatGPS = 0;
     this.heatClick = 0;
     this.cool = 0;
     this.temp = 0;
+    this.maxPower = 0;
+    this.power = 0;
   }
 
   getTotalMinion() {

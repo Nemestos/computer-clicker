@@ -38,7 +38,8 @@ export function displayTotal(gameState) {
 export function getGPS(gameState) {
   gameState.gps = 0;
   gameState.minions.forEach((item) => {
-    if (gameState.heat >= OVERHEAT) {
+    if (gameState.temp >= OVERHEAT) {
+      console.log("lol")
       gameState.gps += (item.gps * item.owned) / 2;
 
     } else {
