@@ -17,7 +17,14 @@ import {
   updateExistingSaves,
 } from "./SaveManager.js";
 import { addEvent, showClicker } from "./ClickerManager.js";
-import { ClickerHeatManager, MinionHeatManager } from "./HeatManager.js";
+import {
+  ClickerHeatManager,
+  CoolManager,
+  createHeatSection, mergeHeat,
+  MinionHeatManager,
+  TempManager,
+  tempUpdate
+} from "./HeatManager.js";
 window.onload = () => {
   sessionStorage.clear();
 };
@@ -33,11 +40,16 @@ initListeners(state);
 updateShopView(state);
 showClicker(state);
 addEvent(state);
+createHeatSection(state);
 
 var handleGpsMinions = setInterval(handleMultMinions, 60, state);
 var gpsMinions = setInterval(getGPS, 1000, state);
 var gpsHandler = setInterval(applyGpsGolds, 1000, state);
-var heat = setInterval(MinionHeatManager, 60, state);
+var updateHeat = setInterval(MinionHeatManager, 60, state);
+var updateMergeHeat = setInterval(mergeHeat, 60, state);
+var updateCool = setInterval(CoolManager, 60, state);
+var updateTemp = setInterval(TempManager, 60, state);
+var updateShowTemp = setInterval(tempUpdate, 60, state);
 var updateSaveId = setInterval(displayCurrentSave, 60, state);
 
 var updateTotal = setInterval(displayTotal, 60, state);
@@ -45,3 +57,4 @@ var updateClickPow = setInterval(handleClickPow, 60, state);
 var updateGold = setInterval(displayGolds, 60, state);
 var updateGps = setInterval(displayGps, 60, state);
 var updateClick = setInterval(displayClickValue, 60, state);
+

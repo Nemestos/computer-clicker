@@ -222,6 +222,26 @@ export var defaultClicker = [
   },
 ];
 
+export var defaultCooler = [
+    {
+      id: 1,
+      name: 'Ventirad',
+      gain: 150,
+      owned: 1,
+      upgrade: 1,
+      cost: 30,
+    },
+
+    {
+      id: 2,
+      name: 'Watercooling',
+      gain: 225,
+      owned: 0,
+      upgrade: 1,
+      cost: 1000,
+    }
+]
+
 class GameState {
   constructor() {
     this.golds = 0;
@@ -229,7 +249,12 @@ class GameState {
     this.click_pow = 1;
     this.minions = [...defaultMinions];
     this.clicker = [...defaultClicker];
+    this.cooler = [...defaultCooler];
     this.heat = 0;
+    this.heatGPS = 0;
+    this.heatClick = 0;
+    this.cool = 0;
+    this.temp = 0;
   }
 
   getTotalMinion() {

@@ -1,6 +1,7 @@
 #computer-panel {
   height: 60%;
   width: 100%;
+  gap: 3px;
 }
 
 #computer-list {
@@ -10,15 +11,26 @@
   flex-wrap: wrap;
 }
 
-#heat-panel,
-#stockage-panel {
-  background-color: red;
-  height: 90%;
-  width: 50%;
+#heat-panel {
+  background-color: #979797;
+  width: 100%;
+  height: 80%;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 #rgb-panel {
   height: 20%;
   width: 100%;
   background-color: green;
+}
+
+.cooler-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  height: 80%;
+  background-color: #d8d8d8;
 }
