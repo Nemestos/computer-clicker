@@ -1,41 +1,70 @@
+#main-click{
+    height: 100%;
+    width: 100%;
+}
 #clicker-panel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 40%;
-  width: 100%;
-  background-color: #979797;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    background-color: #979797;
 }
 
 #list-clicker {
-  background-color: #d8d8d8;
-  flex-direction: row;
-  height: 50%;
-  width: 100%;
+    display: flex;
+    background-color: #d8d8d8;
+    flex-direction: row;
+    height: 30%;
+    width: 100%;
 }
 
 #list-clicker > button {
-  height: 100%;
-  width: 20%;
+    height: 100%;
+    width: 20%;
+    d
+}
+.app-item{
+    max-width: 100%;
+    max-height: 100%;
 }
 
-#clickBtn {
-  width: fit-content;
-  height: auto;
+.clickImage {
+
+    height: auto;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-#clickImage {
-  min-width: 0%;
-  min-height: 0%;
-  object-fit: contain;
-  cursor: pointer;
-  transition: 0.3s;
+.clickImage:hover {
+    transform: rotateZ(45deg) scale(85%);
 }
 
-#clickImage:hover {
-  transform: rotateZ(45deg) scale(85%);
+.clickImage:active {
+    transform: rotateZ(-45deg) scale(110%);
 }
 
-#clickImage:active {
-  transform: rotateZ(-45deg) scale(110%);
+.button-clicker {
+
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#main-click-img{
+    height: auto;
+}
+#main-click{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#main-click-btn{
+    width: fit-content;
+    height: fit-content;
+    transform: scale(200%);
+
+
+
 }

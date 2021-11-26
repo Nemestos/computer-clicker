@@ -162,7 +162,7 @@ export var defaultClicker = [
     gain: 33333,
     cost: 50,
     owned: 0,
-    image: "",
+    image: "assets/img/notepad-logo.jpeg",
   },
   {
     id: 2,
@@ -170,7 +170,7 @@ export var defaultClicker = [
     gain: 2,
     cost: 200,
     owned: 0,
-    image: "",
+    image: "assets/img/emacs-logo.png",
   },
   {
     id: 3,
@@ -178,7 +178,7 @@ export var defaultClicker = [
     gain: 4,
     cost: 500,
     owned: 0,
-    image: "",
+    image: "assets/img/vim-logo.png",
   },
   {
     id: 4,
@@ -186,7 +186,7 @@ export var defaultClicker = [
     gain: 6,
     cost: 1000,
     owned: 0,
-    image: "",
+    image: "assets/img/notepad++-logo.png",
   },
   {
     id: 5,
@@ -194,7 +194,7 @@ export var defaultClicker = [
     gain: 8,
     cost: 3000,
     owned: 0,
-    image: "",
+    image: "assets/img/vs-code-logo.png",
   },
 ];
 
