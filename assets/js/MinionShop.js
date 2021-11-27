@@ -84,7 +84,7 @@ function createEmptyMinionItem(parent, items) {
 }
 
 function updateMinionInfo(infosParent, minion, gameState) {
-    let title = genElement(infosParent, "h3", `${minion.name}(${minion.gps * minion.owned}/s)(${getMinionPower(minion).toFixed(2)}W)(${minion.temp}C)`);
+    let title = genElement(infosParent, "h3", `${minion.name}(${(minion.gps * minion.owned).toFixed(2)}/s)(${getMinionPower(minion).toFixed(2)}W)(${minion.temp}C)`);
     if (minion.owned == 0) {
         let buy = genElement(infosParent, "button", "Buy");
         let price = genElement(infosParent, "h4", `Cost : ${minion.cost}`);
