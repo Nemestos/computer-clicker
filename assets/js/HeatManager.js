@@ -69,7 +69,7 @@ export function createHeatSection(gameState) {
 
             genElement(item, "h4", 'Speed', "");
             genElement(item, "p", `${cooler.upgrade}`, "");
-            genElement(item, "p", `${cooler.cost}$`, "");
+            genElement(item, "p", `${cooler.cost.toFixed(2)}$`, "");
             let button = genElement(item, "button", 'Upgrade');
             button.setAttribute('id', "upgrade-cooler");
         }else{

@@ -1,4 +1,6 @@
 #computer-panel {
+  display: flex;
+  flex-direction: column;
   height: 60%;
   width: 100%;
   gap: 3px;
