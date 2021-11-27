@@ -1,5 +1,6 @@
 #infos {
   position: sticky;
+  top: 0;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -7,6 +8,7 @@
   border-bottom: gold 3px solid;
   gap: 5%;
   flex: 1 1 0px;
+  z-index: 1;
 }
 
 #infos div {

@@ -270,6 +270,8 @@ class GameState {
     this.temp = 0;
     this.maxPower = 0;
     this.power = 0;
+
+    this.rgb=false;
   }
 
   getTotalMinion() {

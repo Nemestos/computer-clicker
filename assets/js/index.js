@@ -14,16 +14,21 @@ import {displayCurrentSave, initListeners, updateExistingSaves,} from "./SaveMan
 import {addEvent, showClicker} from "./ClickerManager.js";
 import {CoolManager, createHeatSection, mergeHeat, MinionHeatManager, TempManager, tempUpdate} from "./HeatManager.js";
 import {createPowerSection, handlePowerDraw} from "./PowerManager.js";
+import {handleRgb} from "./AnimationManager.js";
 
 window.onload = () => {
   sessionStorage.clear();
 };
 
 var btnAddGold = document.getElementById("main-click-btn");
+var btnToggleRgb = document.getElementById("rgb-activator")
 var state = new GameState();
 btnAddGold.addEventListener("click", () => {
   addGold(state, 2 ** state.click_pow);
 });
+btnToggleRgb.addEventListener("click",()=>{
+  state.rgb = 1-state.rgb
+})
 updateExistingSaves();
 
 initListeners(state);
@@ -33,6 +38,7 @@ addEvent(state);
 createHeatSection(state);
 createPowerSection(state)
 
+//system architecture
 var handleGpsMinions = setInterval(handleMultMinions, 60, state);
 var gpsMinions = setInterval(getGPS, 60, state);
 var gpsHandler = setInterval(applyGpsGolds, 1000, state);
@@ -48,4 +54,4 @@ var updateClickPow = setInterval(handleClickPow, 60, state);
 var updateGold = setInterval(displayGolds, 60, state);
 var updateGps = setInterval(displayGps, 60, state);
 var updateClick = setInterval(displayClickValue, 60, state);
-
+var updateRgb = setInterval(handleRgb,60,state)

@@ -1,9 +1,10 @@
 import {MINIONS_TYPES_MULT, PRICE_MULT} from "./State.js";
 import {genElement} from "./HelperDom.js";
 
-export function getMinionPower(minion){
-    return minion.default_power*minion.owned;
+export function getMinionPower(minion) {
+    return minion.default_power * minion.owned;
 }
+
 export function getObjectById(array, id) {
     let x = null;
     array.forEach((element) => {
@@ -25,10 +26,10 @@ export function handleMultMinions(gameState) {
 
 }
 
-export function buyMinion(gameState,id) {
+export function buyMinion(gameState, id) {
 
     let minion = getObjectById(gameState.minions, id);
-    if (minion != null && gameState.golds >= minion.cost && gameState.power+minion.default_power<=gameState.maxPower) {
+    if (minion != null && gameState.golds >= minion.cost && gameState.power + minion.default_power <= gameState.maxPower) {
         gameState.golds -= minion.cost;
         minion.owned += 1;
         updateShopView(gameState);
@@ -45,10 +46,10 @@ function handleCapacityStructureUpdate(cap, minion) {
     }
 }
 
-export function upgradeCapacity(gameState,minion,id) {
+export function upgradeCapacity(gameState, minion, id) {
 
     let cap = getObjectById(minion.capacities, id)
-    if (cap != null && gameState.golds >= cap.price && gameState.power+minion.default_power<=gameState.maxPower) {
+    if (cap != null && gameState.golds >= cap.price && gameState.power + minion.default_power <= gameState.maxPower) {
         gameState.golds -= cap.price;
 
         handleCapacityStructureUpdate(cap, minion)
@@ -83,13 +84,13 @@ function createEmptyMinionItem(parent, items) {
 }
 
 function updateMinionInfo(infosParent, minion, gameState) {
-    let title = genElement(infosParent, "h3", `${minion.name}(${minion.gps*minion.owned}/s)(${getMinionPower(minion).toFixed(2)}W)(${minion.temp}C)`);
+    let title = genElement(infosParent, "h3", `${minion.name}(${minion.gps * minion.owned}/s)(${getMinionPower(minion).toFixed(2)}W)(${minion.temp}C)`);
     if (minion.owned == 0) {
         let buy = genElement(infosParent, "button", "Buy");
         let price = genElement(infosParent, "h4", `Cost : ${minion.cost}`);
 
-        buy.addEventListener("click",(evt)=>{
-            buyMinion(gameState,minion.id)
+        buy.addEventListener("click", (evt) => {
+            buyMinion(gameState, minion.id)
         });
 
     } else {
@@ -111,7 +112,6 @@ function getNextValue(source, cap) {
 }
 
 
-
 function updateMinionCapacities(capParent, capacities, minion, gameState) {
     capacities.forEach((cap) => {
         let capItem = genElement(capParent, "div", "", "data-item");
@@ -126,8 +126,8 @@ function updateMinionCapacities(capParent, capacities, minion, gameState) {
         if (next != "x") {
             let upgrade = genElement(capItem, "button", "Upgrade");
 
-            upgrade.addEventListener("click", ()=>{
-                upgradeCapacity(gameState,minion,cap.id)
+            upgrade.addEventListener("click", () => {
+                upgradeCapacity(gameState, minion, cap.id)
             });
             upgrade.addEventListener("mouseover", () => {
                 genElement(value, "label", `->${next}`);
