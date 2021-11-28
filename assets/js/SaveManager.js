@@ -1,7 +1,7 @@
 import { addEvent, showClicker } from "./ClickerManager.js";
 import { genElement } from "./HelperDom.js";
 import { updateShopView } from "./MinionShop.js";
-import {createHeatSection} from "./HeatManager.js";
+import {ClickerHeatManager, createHeatSection} from "./HeatManager.js";
 import {createPowerSection} from "./PowerManager.js";
 
 const SAVES_KEY = "existing_saves";
@@ -34,11 +34,13 @@ export function initListeners(gameState) {
   });
 }
 function reloadView(gameState) {
-  createHeatSection(gameState);
-  createPowerSection(gameState)
+  initListeners(gameState);
   updateShopView(gameState);
   showClicker(gameState);
   addEvent(gameState);
+  createHeatSection(gameState);
+  createPowerSection(gameState)
+  ClickerHeatManager(gameState);
 }
 export function getExistingsSaves() {
   let saves = localStorage.getItem(SAVES_KEY);
@@ -80,6 +82,7 @@ export function loadSave(idSave, gameState) {
   let existing = getExistingsSaves();
   setCurrentSaveSession(idSave);
   applySave(gameState, existing[idSave]);
+
 }
 
 export function applySave(gameState, loading) {
@@ -96,6 +99,7 @@ export function newSave(gameState) {
 export function resetAllSaves() {
   localStorage.setItem(SAVES_KEY, "[]");
   setCurrentSaveSession("");
+
 }
 
 export function setCurrentSaveSession(idSave) {

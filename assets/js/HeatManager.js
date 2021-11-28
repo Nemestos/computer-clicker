@@ -21,6 +21,7 @@ export function CoolManager(gameState) {
 }
 
 export function TempManager(gameState) {
+    console.log(gameState.heat,gameState.cool)
     gameState.temp = (gameState.heat / gameState.cool) * 100;
 }
 
