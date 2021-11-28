@@ -1,12 +1,12 @@
 const DEFAULT_HEADER_BACKGROUND = "#8aeb7a"
 
-export function handleRgb(gameState) {
-    let rgbs = document.querySelectorAll(".can-rgb")
-    rgbs.forEach((rgb)=>{
-        if(gameState.rgb){
-            rgb.classList.add("rgb")
+export function handleAnimation(gameState,animation) {
+    let elts = document.querySelectorAll(`.can-${animation}`)
+    elts.forEach((x)=>{
+        if(gameState[animation]){
+            x.classList.add(animation)
         }else{
-            rgb.classList.remove("rgb")
+            x.classList.remove(animation)
         }
     })
 
