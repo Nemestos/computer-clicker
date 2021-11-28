@@ -14,7 +14,7 @@ import {displayCurrentSave, initListeners, updateExistingSaves,} from "./SaveMan
 import {addEvent, showClicker} from "./ClickerManager.js";
 import {CoolManager, createHeatSection, mergeHeat, MinionHeatManager, TempManager, tempUpdate} from "./HeatManager.js";
 import {createPowerSection, handlePowerDraw} from "./PowerManager.js";
-import {handleRgb} from "./AnimationManager.js";
+import {handleAnimation} from "./AnimationManager.js";
 
 window.onload = () => {
   sessionStorage.clear();
@@ -22,12 +22,16 @@ window.onload = () => {
 
 var btnAddGold = document.getElementById("main-click-btn");
 var btnToggleRgb = document.getElementById("rgb-activator")
+var btnMatrix = document.getElementById("matrix-activator")
 var state = new GameState();
 btnAddGold.addEventListener("click", () => {
   addGold(state, 2 ** state.click_pow);
 });
 btnToggleRgb.addEventListener("click",()=>{
   state.rgb = 1-state.rgb
+})
+btnMatrix.addEventListener("click",()=>{
+  state.matrix = 1-state.matrix
 })
 updateExistingSaves();
 
@@ -54,4 +58,5 @@ var updateClickPow = setInterval(handleClickPow, 60, state);
 var updateGold = setInterval(displayGolds, 60, state);
 var updateGps = setInterval(displayGps, 60, state);
 var updateClick = setInterval(displayClickValue, 60, state);
-var updateRgb = setInterval(handleRgb,60,state)
+var updateRgb = setInterval(handleAnimation,60,state,"rgb")
+var updateMatrix = setInterval(handleAnimation,60,state,"matrix")

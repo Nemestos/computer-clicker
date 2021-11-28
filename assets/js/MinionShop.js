@@ -65,6 +65,7 @@ export function updateShopView(gameState) {
     minions_list.innerHTML = "";
     gameState.minions.forEach((item) => {
         let [elt, info] = createEmptyMinionItem(minions_list, item);
+        info.classList.add("can-rgb")
         updateMinionInfo(info, item, gameState);
         if (item.owned > 0) {
             updateMinionCapacities(elt, item.capacities, item, gameState);
