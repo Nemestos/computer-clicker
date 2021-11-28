@@ -1,4 +1,5 @@
 export const PRICE_MULT = 1.15;
+export const DEFAULT_POWER=300;
 export const CLICK_MOD = 10;
 export const MINIONS_TYPES_MULT = [5, 50, 100, 250, 1000];
 export var defaultMinions = [
@@ -247,7 +248,7 @@ export var defaultPower = [
         id: 1,
         name: "Power",
         owned: 1,
-        powering: 300,
+        powering: DEFAULT_POWER,
         incr: 50,
         cost: 100
     }
@@ -268,7 +269,7 @@ class GameState {
         this.heatClick = 0;
         this.cool = 0;
         this.temp = 0;
-        this.maxPower = 0;
+        this.maxPower = DEFAULT_POWER;
         this.power = 0;
 
         this.rgb = false;
