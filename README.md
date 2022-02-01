@@ -4,7 +4,7 @@
   </a>
 
   <h3 align="center">Computer clicker</h3>
-
+  <img src="image.png" alt="Computer" width=1920 height=720>
   <p align="center">
     A evolutive Computer Clicker Game
   </p>
